@@ -2,3 +2,8 @@
 *.iml
 *.iws
 *.class
+
+target/
+*.iml
+*.iws
+*.class

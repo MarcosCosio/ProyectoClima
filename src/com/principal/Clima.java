@@ -8,7 +8,7 @@ public class Clima {
     private Atmosfera atmosfera=new Atmosfera();
     private Viento viento=new Viento();
 
-    public void nuevoDia(float temp, String descr, Date fecha, int nomSemana)
+    public void nuevoDia(float temp, String descr, java.sql.Date fecha, int nomSemana)
     {
         pronostico.nuevoDia(temp,descr,fecha,nomSemana);
     }
@@ -26,7 +26,7 @@ public class Clima {
         System.out.println("Atmosfera guardada");
 
     }
-    public void diaSig (int max, int min,Date fecha, String descripcion)
+    public void diaSig (int max, int min, java.sql.Date fecha, String descripcion)
     {
         pronostico.diaSig(max,min,fecha,descripcion);
     }

@@ -9,16 +9,16 @@ public class Dia {
     private String diaSemana;
     private int max;
     private int min;
-    private java.util.Date fecha;
+    private java.sql.Date fecha;
 
-    public Dia(float temperatura, String descripcion, Date fecha, String diaSemana) {
+    public Dia(float temperatura, String descripcion, java.sql.Date fecha, String diaSemana) {
         this.temperatura = temperatura;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.diaSemana = diaSemana;
     }
 
-    public Dia(int max, int min,Date fecha, String descripcion, String diaSemana) {
+    public Dia(int max, int min, java.sql.Date fecha, String descripcion, String diaSemana) {
         this.max = max;
         this.min = min;
         this.fecha=fecha;
@@ -63,7 +63,7 @@ public class Dia {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(java.sql.Date fecha) {
         this.fecha = fecha;
     }
 }

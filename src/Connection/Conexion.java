@@ -1,21 +1,24 @@
-package com.principal.Connection;
+package Connection;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class BD {
+public class Conexion {
 
+    private static Conexion conexionBase;
     private java.sql.Connection conexion;
-    private java.sql.Statement ste;
     private java.sql.ResultSet rs;
+
+
 
     public java.sql.ResultSet consultar(String query)
     {
         try
         {
 
-            ste = conexion.createStatement();
+            java.sql.Statement ste = conexion.createStatement();
             rs = ste.executeQuery(query);
+
 
         }
         catch (SQLException e)
@@ -58,9 +61,29 @@ public class BD {
         }
     }
 
-    public java.sql.Connection getConexion()
+    public void actualizar(String query)
     {
-        return conexion;
+        try
+        {
+
+            java.sql.Statement ste = conexion.createStatement();
+            ste.executeUpdate(query);
+
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.print("Error de Conexion");
+        }
+
+    }
+
+    public Conexion BD()
+    {
+        if (conexionBase==null) {
+            conexionBase=new Conexion();
+        }
+        return conexionBase;
     }
 
 }

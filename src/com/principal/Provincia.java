@@ -59,7 +59,7 @@ public class Provincia {
         this.capital = capital;
     }
 
-    public void nuevoDia(float temp, String descr, Date fecha, int nomSemana)
+    public void nuevoDia(float temp, String descr, java.sql.Date fecha, int nomSemana)
     {
         clima.nuevoDia(temp,descr,fecha,nomSemana);
     }
@@ -71,7 +71,7 @@ public class Provincia {
     {
         clima.setAtmosfera(pre,hum,ambAs,vis);
     }
-    public void diaSig (int max, int min,Date fecha, String descripcion)
+    public void diaSig (int max, int min, java.sql.Date fecha, String descripcion)
     {
         clima.diaSig(max,min,fecha,descripcion);
     }

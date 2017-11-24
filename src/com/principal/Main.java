@@ -1,17 +1,14 @@
 package com.principal;
 
-import com.principal.Connection.BD;
-
+import DAOImp.EstadoDAOImp;
 
 import java.sql.SQLException;
-import java.util.Date;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-import java.text.SimpleDateFormat;
+
+
 
 
 public class Main {
@@ -22,11 +19,11 @@ public class Main {
     {
 
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BD database = new BD();
+
         Estado estActual=null;
         Provincia provActual=null;
-        ArrayList<Estado> estados = new ArrayList<>();
+        ArrayList<Estado> estados = new ArrayList<Estado>();
+        Consola consola=new Consola();
         int opc=99;
         int diaActual=0;
         int mesActual=0;
@@ -34,7 +31,7 @@ public class Main {
 
 
         do {
-            System.out.print("Por Favor ingrese opcion\n" +
+            consola.out("Por Favor ingrese opcion\n" +
                     "1 Nuevo Estados\n" +
                     "2 Nueva Provincia\n" +
                     "3 Guardar Dia Actual\n" +
@@ -44,46 +41,37 @@ public class Main {
                     "7 Salir\n");
 
 
-            try {
-                opc = Integer.parseInt(br.readLine());
-            } catch (NumberFormatException nfe) {
-                System.err.println("Formato Invalido");
-            }
+            opc=consola.leerInt("");
             switch (opc)
             {
                 //1
                 case 1:
                 {
-                    System.out.println("Ingrese Nombre");
-                    String nom= br.readLine();
-                    System.out.println("Ingrese Codigo Pais (2 letras)");
-                    String lettcod2=br.readLine();
-                    System.out.println("Ingrese Codigo Pais (3 letras)");
-                    String lettcod3=br.readLine();
-                    Estado est= new Estado(nom,lettcod2,lettcod3);
+                    String nom= consola.leerLinea("Ingrese Nombre");
+                    String lettcod2=consola.leerLinea("Ingrese Codigo Pais (2 letras)");
+                    String lettcod3=consola.leerLinea("Ingrese Codigo Pais (3 letras)");
+                    int paisCod=consola.leerInt("Ingrese Codigo numerico de pais");
+                    Estado est= new Estado(nom,lettcod2,lettcod3,paisCod);
                     estados.add(est);
+                    EstadoDAOImp estDAO =new EstadoDAOImp();
+                    estDAO.agregar(est);
 
                 }
                 break;
                 case 2:
                 {
 
-                    System.out.println("Ingrese a que estado pertenece la provincia");
-                    String est=br.readLine();
+                    String est=consola.leerLinea("Ingrese a que estado pertenece la provincia");
                     for(int i=0;i<estados.size();i++)
                     {
                         if (est.equals(estados.get(i).getNom())) {
                         estActual=estados.get(i);
                        }
                     }
-                    System.out.println("Ingrese Nombre");
-                    String nom= br.readLine();
-                    System.out.println("Ingrese Tamaño de la Provincia");
-                    int size=Integer.parseInt(br.readLine());
-                    System.out.println("Ingresar abreviatura de provincia");
-                    String abr=br.readLine();
-                    System.out.println("Ingresar capital de provincia");
-                    String cap=br.readLine();
+                    String nom= consola.leerLinea("Ingrese Nombre");
+                    int size=consola.leerInt("Ingrese Tamaño de la Provincia");
+                    String abr=consola.leerLinea("Ingresar abreviatura de provincia");
+                    String cap=consola.leerLinea("Ingresar capital de provincia");
                     Provincia prov= new Provincia(nom,size,abr,cap);
                     estActual.setProv(prov);
                     provActual=prov;
@@ -92,45 +80,37 @@ public class Main {
                 break;
                 case 3:
                 {
-                    System.out.println("Ingrese Dia");
-                    int dia=Integer.parseInt(br.readLine());
+                    int dia=consola.leerInt("Ingrese Dia");
                     diaActual=dia;
-                    System.out.println("Ingrese Mes");
-                    int mes=Integer.parseInt(br.readLine());
+                    int mes=consola.leerInt("Ingrese Mes");
                     mesActual=mes;
-                    System.out.println("Ingresar Año");
-                    int anio=Integer.parseInt(br.readLine());
+                    int anio=consola.leerInt("Ingresar Año");
                     anioActual=anio;
-                    String oldstring = anio+"-"+mes+"-"+dia;
-                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
-                    System.out.println("Ingrese Temperatura Actual");
-                    float temp=Float.parseFloat(br.readLine());
-                    System.out.println("Ingresar Descripcion");
-                    String descr=br.readLine();
-                    System.out.println("Ingrese Dia de la Semana(1 para Lunes,2 para Martes,etc)");
-                    int nomSemana=Integer.parseInt(br.readLine());
-                    provActual.nuevoDia(temp,descr,date,nomSemana);
+                    java.sql.Date dateS=consola.getDateSQL(anio,mes,dia);
+                    float temp=consola.leerFloat("Ingrese Temperatura Actual");
+                    String descr=consola.leerLinea("Ingresar Descripcion");
+                    int nomSemana=0;
+                    do
+                    {
+                        nomSemana = consola.leerInt("Ingrese Dia de la Semana(1 para Lunes,2 para Martes,etc)");
+                    }
+                    while(!(nomSemana>0&&nomSemana<8));
+                    provActual.nuevoDia(temp,descr,dateS,nomSemana);
                 }
                 break;
                 case 4:
                 {
-                    System.out.println("Ingresar Velocidad");
-                    int velV=Integer.parseInt(br.readLine());
-                    System.out.println("Ingresar Direccion");
-                    String dir=br.readLine();
+                    int velV=consola.leerInt("Ingresar Velocidad");
+                    String dir=consola.leerLinea("Ingresar Direccion");
                     provActual.setViento(velV,dir);
                 }
                 break;
                 case 5:
                 {
-                    System.out.println("Ingresar Presion");
-                    float pre=Float.parseFloat(br.readLine());
-                    System.out.println("Ingresar Humedad");
-                    int hum=Integer.parseInt(br.readLine());
-                    System.out.println("Ingresar visibilidad");
-                    int vis=Integer.parseInt(br.readLine());
-                    System.out.println("Ingresar Ambiente Ascendente");
-                    int ambAs=Integer.parseInt(br.readLine());
+                    float pre=consola.leerFloat("Ingresar Presion");
+                    int hum=consola.leerInt("Ingresar Humedad");
+                    int vis=consola.leerInt("Ingresar visibilidad");
+                    int ambAs=consola.leerInt("Ingresar Ambiente Ascendente");
                     provActual.setAtmosfera(pre,hum,ambAs,vis);
                 }
                 break;
@@ -138,14 +118,10 @@ public class Main {
                 {
 
                     diaActual++;
-                    String oldstring = anioActual+"-"+mesActual+"-"+diaActual;
-                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
-                    System.out.println("Ingrese Maxima Pronosticada");
-                    int max=Integer.parseInt(br.readLine());
-                    System.out.println("Ingrese Minima Pronosticada");
-                    int min=Integer.parseInt(br.readLine());
-                    System.out.println("Ingresar Descripcion");
-                    String descr=br.readLine();
+                    java.sql.Date date = consola.getDateSQL(anioActual,mesActual,diaActual);
+                    int max=consola.leerInt("Ingrese Maxima Pronosticada");
+                    int min=consola.leerInt("Ingrese Minima Pronosticada");
+                    String descr=consola.leerLinea("Ingresar Descripcion");
                     provActual.diaSig(max,min,date,descr);
                 }
 
