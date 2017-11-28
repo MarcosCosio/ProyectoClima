@@ -1,5 +1,8 @@
 package com.principal;
 
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Dia {
@@ -9,16 +12,16 @@ public class Dia {
     private String diaSemana;
     private int max;
     private int min;
-    private java.sql.Date fecha;
+    private LocalDateTime fecha;
 
-    public Dia(float temperatura, String descripcion, java.sql.Date fecha, String diaSemana) {
+    public Dia(float temperatura, String descripcion, LocalDateTime fecha, String diaSemana) {
         this.temperatura = temperatura;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.diaSemana = diaSemana;
     }
 
-    public Dia(int max, int min, java.sql.Date fecha, String descripcion, String diaSemana) {
+    public Dia(int max, int min, LocalDateTime fecha, String descripcion, String diaSemana) {
         this.max = max;
         this.min = min;
         this.fecha=fecha;
@@ -59,11 +62,30 @@ public class Dia {
         this.min = min;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(java.sql.Date fecha) {
+    public void setFecha (int anio,int mes,int dia,int hora,int min,int seg) throws ParseException {
+        String oldstring = "\""+anio+"-"+mes+"-"+dia+" "+hora+":"+min+":"+seg+"\"";
+        LocalDateTime datetime = LocalDateTime.parse(oldstring, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+        this.fecha=datetime;
+
+    }
+
+    public String getDiaSemana() {
+        return diaSemana;
+    }
+
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
+    public void setTemperatura(float temperatura) {
+        this.temperatura = temperatura;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 }

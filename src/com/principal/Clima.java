@@ -1,34 +1,67 @@
 package com.principal;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Clima {
     private Pronostico pronostico=new Pronostico();
-    private Atmosfera atmosfera=new Atmosfera();
-    private Viento viento=new Viento();
+    private Atmosfera atmosfera;
+    private Viento viento;
+    private Localidad localidad;
 
-    public void nuevoDia(float temp, String descr, java.sql.Date fecha, int nomSemana)
+    public Clima(Dia dia, Atmosfera atmosfera, Viento viento, Localidad localidad) {
+        this.pronostico.set1erDia(dia);
+        this.atmosfera = atmosfera;
+        this.viento = viento;
+        this.localidad = localidad;
+    }
+
+    public void nuevoDia(float temp, String descr, LocalDateTime fecha, int nomSemana)
     {
         pronostico.nuevoDia(temp,descr,fecha,nomSemana);
     }
 
-    public void setViento(int velV,String dir) {
-        viento.setDireccion(dir);
-        viento.setVelocidad(velV);
-        System.out.println("Viento guardado");
-    }
-    public void setAtmosfera(float pre,int hum, int ambAs,int vis) {
-        atmosfera.setPresion(pre);
-        atmosfera.setHumedad(hum);
-        atmosfera.setAmbienteAscendente(ambAs);
-        atmosfera.setVisivilidad(vis);
-        System.out.println("Atmosfera guardada");
 
-    }
-    public void diaSig (int max, int min, java.sql.Date fecha, String descripcion)
+    public void diaSig (int max, int min,LocalDateTime fecha, String descripcion)
     {
         pronostico.diaSig(max,min,fecha,descripcion);
+    }
+    public Dia get1erDia ()
+    {
+        return pronostico.get1erdia();
+    }
+
+    public Pronostico getPronostico() {
+        return pronostico;
+    }
+
+    public void setPronostico(Pronostico pronostico) {
+        this.pronostico = pronostico;
+    }
+
+    public Atmosfera getAtmosfera() {
+        return atmosfera;
+    }
+
+    public void setAtmosfera(Atmosfera atmosfera) {
+        this.atmosfera = atmosfera;
+    }
+
+    public Viento getViento() {
+        return viento;
+    }
+
+    public void setViento(Viento viento) {
+        this.viento = viento;
+    }
+
+    public Localidad getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(Localidad localidad) {
+        this.localidad = localidad;
     }
 
 }

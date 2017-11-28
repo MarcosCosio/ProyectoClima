@@ -5,8 +5,15 @@ public class Atmosfera {
     private float presion;
     private int visivilidad;
     private int ambienteAscendente;
+    private int codAtm;
 
-
+    public Atmosfera(int humedad, float presion, int visivilidad, int ambienteAscendente, int codAtm) {
+        this.humedad = humedad;
+        this.presion = presion;
+        this.visivilidad = visivilidad;
+        this.ambienteAscendente = ambienteAscendente;
+        this.codAtm = codAtm;
+    }
 
     public int getHumedad() {
         return humedad;
@@ -40,5 +47,12 @@ public class Atmosfera {
         this.ambienteAscendente = ambienteAscendente;
     }
 
+    public int getCodAtm() {
+        return codAtm;
+    }
+
+    public void setCodAtm(int codAtm) {
+        this.codAtm = codAtm;
+    }
 
 }

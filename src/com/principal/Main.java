@@ -38,7 +38,8 @@ public class Main {
                     "4 Guardar Viento\n" +
                     "5 Guardar Armosfera\n" +
                     "6 Guardar Dia Siguiente\n" +
-                    "7 Salir\n");
+                    "7 test funcion " +
+                    "8 Salir\n");
 
 
             opc=consola.leerInt("");
@@ -72,21 +73,24 @@ public class Main {
                     int size=consola.leerInt("Ingrese Tamaño de la Provincia");
                     String abr=consola.leerLinea("Ingresar abreviatura de provincia");
                     String cap=consola.leerLinea("Ingresar capital de provincia");
-                    Provincia prov= new Provincia(nom,size,abr,cap);
-                    estActual.setProv(prov);
-                    provActual=prov;
+
+
 
                 }
                 break;
                 case 3:
                 {
+                    int seg=consola.leerInt("Ingrese segundo");
+                    int min=consola.leerInt("Ingrese minuto");
+                    int hora=consola.leerInt("Ingrese hora");
                     int dia=consola.leerInt("Ingrese Dia");
                     diaActual=dia;
                     int mes=consola.leerInt("Ingrese Mes");
                     mesActual=mes;
                     int anio=consola.leerInt("Ingresar Año");
                     anioActual=anio;
-                    java.sql.Date dateS=consola.getDateSQL(anio,mes,dia);
+
+
                     float temp=consola.leerFloat("Ingrese Temperatura Actual");
                     String descr=consola.leerLinea("Ingresar Descripcion");
                     int nomSemana=0;
@@ -95,14 +99,14 @@ public class Main {
                         nomSemana = consola.leerInt("Ingrese Dia de la Semana(1 para Lunes,2 para Martes,etc)");
                     }
                     while(!(nomSemana>0&&nomSemana<8));
-                    provActual.nuevoDia(temp,descr,dateS,nomSemana);
+
                 }
                 break;
                 case 4:
                 {
                     int velV=consola.leerInt("Ingresar Velocidad");
                     String dir=consola.leerLinea("Ingresar Direccion");
-                    provActual.setViento(velV,dir);
+
                 }
                 break;
                 case 5:
@@ -111,24 +115,29 @@ public class Main {
                     int hum=consola.leerInt("Ingresar Humedad");
                     int vis=consola.leerInt("Ingresar visibilidad");
                     int ambAs=consola.leerInt("Ingresar Ambiente Ascendente");
-                    provActual.setAtmosfera(pre,hum,ambAs,vis);
+
                 }
                 break;
                 case 6:
                 {
 
                     diaActual++;
-                    java.sql.Date date = consola.getDateSQL(anioActual,mesActual,diaActual);
+
                     int max=consola.leerInt("Ingrese Maxima Pronosticada");
                     int min=consola.leerInt("Ingrese Minima Pronosticada");
                     String descr=consola.leerLinea("Ingresar Descripcion");
-                    provActual.diaSig(max,min,date,descr);
-                }
 
+                }
+                break;
+                case 7:
+                {
+
+                }
+                break;
             }
 
         }
-        while (opc!=7);
+        while (opc!=8);
 
     }
 

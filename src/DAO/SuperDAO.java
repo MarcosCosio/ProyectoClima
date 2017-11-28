@@ -1,9 +1,11 @@
 package DAO;
 
-public interface SuperDAO <o,pk>
+import java.sql.SQLException;
+
+public interface SuperDAO <o,y>
 {
     void agregar(o primary);
     void eliminar(o primary);
-    void modificar(o primary);
-    o obtener (pk primary);
+    void modificar(o old,o nuevo) throws SQLException;
+    o obtener (y primary) throws SQLException;
 }

@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Consola
@@ -61,10 +62,5 @@ public class Consola
         System.out.println(str);
     }
 
-    public Date getDateSQL (int anio,int mes,int dia) throws ParseException {
-        String oldstring = anio+"-"+mes+"-"+dia;
-        java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
-        java.sql.Date dateS=new java.sql.Date(date.getTime());
-        return  dateS;
-    }
+
 }

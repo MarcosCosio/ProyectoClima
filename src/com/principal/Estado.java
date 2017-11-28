@@ -7,7 +7,7 @@ public class Estado {
     private String lettCod2;
     private String lettCod3;
     private int paisCod;
-    private ArrayList<Provincia> prov=new ArrayList<>();
+
 
 
     public Estado(String nom, String lettCod2, String lettCod3, int paisCod) {
@@ -15,7 +15,7 @@ public class Estado {
         this.lettCod2 = lettCod2;
         this.lettCod3 = lettCod3;
         this.paisCod= paisCod;
-        System.out.println("Estado " + nom + " Guardado");
+       
     }
     public String getNom() {
         return nom;
@@ -41,14 +41,7 @@ public class Estado {
         this.lettCod3 = lettCod3;
     }
 
-    public ArrayList<Provincia> getProv() {
-        return prov;
-    }
 
-
-    public void setProv(Provincia provR) {
-        prov.add(provR);
-    }
 
     public int getPaisCod() {
         return paisCod;

@@ -3,8 +3,13 @@ package com.principal;
 public class Viento {
     private int velocidad;
     private String direccion;
+    private int codViento;
 
-
+    public Viento(int velocidad, String direccion, int codViento) {
+        this.velocidad = velocidad;
+        this.direccion = direccion;
+        this.codViento = codViento;
+    }
 
     public String getDireccion() {
         return direccion;
@@ -20,6 +25,14 @@ public class Viento {
 
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
+    }
+
+    public int getCodViento() {
+        return codViento;
+    }
+
+    public void setCodViento(int codViento) {
+        this.codViento = codViento;
     }
 
 }

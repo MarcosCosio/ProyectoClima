@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -15,15 +16,18 @@ public class Provincia {
     private int size;
     private String abr;
     private String capital;
-    private Clima clima = new Clima();
+    private Estado estado;
 
-    public Provincia(String nombre, int size, String abr, String capital) throws SQLException,IOException
+
+    public Provincia(String nombre, int size, String abr, String capital, Estado estado)
     {
         this.nombre = nombre;
         this.size = size;
         this.abr = abr;
         this.capital = capital;
-        System.out.print("Provincia "+ nombre+" Guardada\n");
+        this.estado=estado;
+
+
     }
 
 
@@ -59,20 +63,12 @@ public class Provincia {
         this.capital = capital;
     }
 
-    public void nuevoDia(float temp, String descr, java.sql.Date fecha, int nomSemana)
-    {
-        clima.nuevoDia(temp,descr,fecha,nomSemana);
+    public Estado getEstado() {
+        return estado;
     }
-    public void setViento (int velV,String dir)
-    {
-        clima.setViento(velV,dir);
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
-    public  void  setAtmosfera (float pre,int hum, int ambAs,int vis)
-    {
-        clima.setAtmosfera(pre,hum,ambAs,vis);
-    }
-    public void diaSig (int max, int min, java.sql.Date fecha, String descripcion)
-    {
-        clima.diaSig(max,min,fecha,descripcion);
-    }
+
 }

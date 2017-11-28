@@ -2,6 +2,7 @@ package com.principal;
 
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Pronostico {
 
@@ -11,14 +12,14 @@ public class Pronostico {
     private String[]nomSemana={"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"};
 
 
-    public void nuevoDia(float temp, String descr, java.sql.Date fecha, int nomSemana)
+    public void nuevoDia(float temp, String descr, LocalDateTime fecha, int nomSemana)
     {
         String diaSemana=this.getNomSemana(nomSemana);
         pronExten[0]=new Dia(temp,descr,fecha,diaSemana);
         System.out.println("Dia guardado");
         diaSig=1;
     }
-    public void diaSig(int max, int min, Date fecha, String descripcion)
+    public void diaSig(int max, int min, LocalDateTime fecha, String descripcion)
     {
         String diaSemana;
         if (diaSig<nomSemana.length)
@@ -47,5 +48,14 @@ public class Pronostico {
     public String getNomSemana(int numS) {
         String nS=nomSemana[numS];
         return nS;
+    }
+    public void set1erDia(Dia dia)
+    {
+        pronExten[0]= dia;
+    }
+    public Dia get1erdia ()
+    {
+        Dia primero= pronExten[0];
+        return primero;
     }
 }
