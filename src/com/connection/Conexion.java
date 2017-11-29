@@ -1,4 +1,4 @@
-package Connection;
+package com.connection;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

@@ -1,8 +1,8 @@
-package DAOImp;
+package com.DAOImp;
 
-import Connection.Conexion;
-import Connection.ConsultaSQL;
-import DAO.LocalidadDAO;
+import com.connection.Conexion;
+import com.connection.ConsultaSQL;
+import com.DAO.LocalidadDAO;
 import com.principal.Localidad;
 import com.principal.Provincia;
 

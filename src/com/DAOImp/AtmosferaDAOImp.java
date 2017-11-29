@@ -1,8 +1,8 @@
-package DAOImp;
+package com.DAOImp;
 
-import Connection.Conexion;
-import Connection.ConsultaSQL;
-import DAO.AtmosferaDAO;
+import com.connection.Conexion;
+import com.connection.ConsultaSQL;
+import com.DAO.AtmosferaDAO;
 import com.principal.Atmosfera;
 
 import java.sql.ResultSet;

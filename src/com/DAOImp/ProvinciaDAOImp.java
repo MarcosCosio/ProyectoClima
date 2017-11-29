@@ -1,12 +1,11 @@
-package DAOImp;
+package com.DAOImp;
 
-import Connection.Conexion;
-import Connection.ConsultaSQL;
-import DAO.ProvinciaDAO;
+import com.connection.Conexion;
+import com.connection.ConsultaSQL;
+import com.DAO.ProvinciaDAO;
 import com.principal.Estado;
 import com.principal.Provincia;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

@@ -1,14 +1,13 @@
-package DAOImp;
+package com.DAOImp;
 
-import Connection.Conexion;
-import Connection.ConsultaSQL;
-import DAO.DiaDAO;
+import com.connection.Conexion;
+import com.connection.ConsultaSQL;
+import com.DAO.DiaDAO;
 import com.principal.Dia;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class DiaDAOImp implements DiaDAO{
 

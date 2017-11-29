@@ -1,8 +1,8 @@
-package DAOImp;
+package com.DAOImp;
 
-import Connection.Conexion;
-import Connection.ConsultaSQL;
-import DAO.VientoDAO;
+import com.connection.Conexion;
+import com.connection.ConsultaSQL;
+import com.DAO.VientoDAO;
 import com.principal.Viento;
 
 import java.sql.ResultSet;

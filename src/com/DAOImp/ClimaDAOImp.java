@@ -1,11 +1,10 @@
-package DAOImp;
+package com.DAOImp;
 
-import Connection.Conexion;
-import Connection.ConsultaSQL;
-import DAO.ClimaDAO;
+import com.connection.Conexion;
+import com.connection.ConsultaSQL;
+import com.DAO.ClimaDAO;
 import com.principal.*;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;

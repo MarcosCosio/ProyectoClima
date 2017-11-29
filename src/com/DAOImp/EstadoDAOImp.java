@@ -1,8 +1,8 @@
-package DAOImp;
+package com.DAOImp;
 
-import Connection.ConsultaSQL;
-import DAO.EstadoDAO;
-import Connection.Conexion;
+import com.connection.ConsultaSQL;
+import com.DAO.EstadoDAO;
+import com.connection.Conexion;
 import com.principal.Estado;
 
 import java.sql.ResultSet;

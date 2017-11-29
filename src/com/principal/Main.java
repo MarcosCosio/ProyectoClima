@@ -1,6 +1,7 @@
 package com.principal;
 
-import DAOImp.EstadoDAOImp;
+import com.DAOImp.EstadoDAOImp;
+import com.builder.EstadoBuilder;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -52,7 +53,8 @@ public class Main {
                     String lettcod2=consola.leerLinea("Ingrese Codigo Pais (2 letras)");
                     String lettcod3=consola.leerLinea("Ingrese Codigo Pais (3 letras)");
                     int paisCod=consola.leerInt("Ingrese Codigo numerico de pais");
-                    Estado est= new Estado(nom,lettcod2,lettcod3,paisCod);
+                    EstadoBuilder estB= null;
+                    Estado est= estB.build(nom,lettcod2,lettcod3,paisCod);
                     estados.add(est);
                     EstadoDAOImp estDAO =new EstadoDAOImp();
                     estDAO.agregar(est);

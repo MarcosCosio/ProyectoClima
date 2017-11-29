@@ -1,5 +1,7 @@
 package com.principal;
 
+import com.builder.EstadoBuilder;
+
 import java.util.ArrayList;
 
 public class Estado {
@@ -10,11 +12,11 @@ public class Estado {
 
 
 
-    public Estado(String nom, String lettCod2, String lettCod3, int paisCod) {
-        this.nom = nom;
-        this.lettCod2 = lettCod2;
-        this.lettCod3 = lettCod3;
-        this.paisCod= paisCod;
+    public Estado(EstadoBuilder est) {
+        this.nom = est.getNom();
+        this.lettCod2 = est.getLettCod2();
+        this.lettCod3 = est.getLettCod3();
+        this.paisCod= est.getPaisCod();
        
     }
     public String getNom() {

@@ -1,4 +1,4 @@
-package DAO;
+package com.DAO;
 
         import com.principal.Clima;
 

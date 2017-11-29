@@ -1,4 +1,4 @@
-package Connection;
+package com.connection;
 
 import java.security.PublicKey;
 import java.util.Enumeration;
